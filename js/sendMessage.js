@@ -5,28 +5,24 @@ https://wa.me/number/?text=urlencodedtext
 
 const form = document.querySelector("contact-form");
 const usernameField =  document.querySelector("#cf-name")
-const emailField = document.querySelector("#cf-email")
-const subjectField = document.querySelector("#cf-subject")
 const messageField = document.querySelector("#cf-message")
 const sendButton = document.querySelector("#cf-submit")
 
 
 sendButton.addEventListener("click",async ()=>{
-    let name = usernameField.value
-    let email = emailField.value
-    let subject =  subjectField.value 
+    let names = usernameField.value
     let message = messageField.value
-    //run a parallel fetch requests
 
+   // alert(names)
+    const messageConstruct = `My name is ${name}.
+     ${message}`
+
+    let url = `https://wa.me/234903741801/?text=${messageConstruct}`
+    
     try {
-      //use promises to run parallel requests
-        const parallel = await Promise.all([
-            fetch("https://wa.me/number/?text=urlencodedtext"),
-            fetch("https://wa.me/number/?text=urlencodedtext"),
-            fetch("https://wa.me/number/?text=urlencodedtext"),
-            fetch("https://wa.me/number/?text=urlencodedtext")
-        ])
+        //hit the whatsapp api endpoint
+        const res = await fetch(url)
     } catch (error) {
-        paralel.json({error:error})
+        res.json({error:error})
     }
 })
