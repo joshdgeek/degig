@@ -26,3 +26,5 @@ form.addEventListener("submit",async (e)=>{
         res.json({error:error})
     }
 })
+
+//used location.assign method to hit the whatsapp api
